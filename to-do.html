@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-image: linear-gradient(to left,rgba(59, 173, 226, 0.842),rgb(194, 218, 212));">
+
+    <div class="container mt-5">
+        <h3 class="text-center text-black mb-3"><u><b>My To-Do List</b></u></h3>
+        <div class="card-box">
+
+            <div class="input-group mb-2 d-inline-flex justify-content-center gap-3">
+                <input type="text" id="task" class="form-control-lg w-75 rounded" placeholder="Enter task here ">
+                <button class="btn btn-warning rounded" id="Add">Add</button>
+            </div>
+
+            <ul class="list-group" id="list"></ul>
+        </div>
+
+        <script>
+            let addBtn = document.getElementById("Add");
+            let taskInput = document.getElementById("task");
+            let taskList = document.getElementById("list");
+
+            addBtn.onclick = function () {
+                let txt = taskInput.value.trim();
+                if (txt === "") {
+                    alert("Please write something");
+                    return;
+                }
+
+                let li = document.createElement("li");
+                li.className = "list-group-item d-flex justify-content-between align-items-center form-lg";
+                li.innerHTML = `<span>${txt}</span>
+      <div>
+        <button class="btn btn-outline-info me-2 done" style="width:75px;">Done</button>
+        <button class="btn btn-outline-danger del">Delete</button>
+      </div>`;
+
+                taskList.appendChild(li);
+                taskInput.value = "";
+
+                let doneBtn = li.querySelector(".done");
+                let delBtn = li.querySelector(".del");
+
+                doneBtn.onclick = function () {
+                    li.classList.toggle("list-group-item-success");
+                }
+
+                delBtn.onclick = function () {
+                    li.remove();
+                }
+            }
+        </script>
+</body>
+
+</html>
