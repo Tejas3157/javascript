@@ -4,37 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Cringe Jokes</title>
 
     <style>
-        body{
-            color: aliceblue;
-            background-image: url('Background.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container1{
+       body{
+        background: linear-gradient(to right, #8eefe5, #cda6eb);
+       }
+       h1{
+        color: black;
+       }
+
+        .shadow {
             backdrop-filter: blur(2px);
         }
     </style>
 </head>
 
-<body>
-    <div class="container1">
-    <h1>&#128518 Jokes Tables</h1>
+<body class="d-flex align-items-start align-items-md-center justify-content-center text-light">
+    <section>
+        <div class="container my-5">
+            <div class="p-4 p-md-5 rounded shadow">
+                <h1 class="text-center fw-bold mb-4">&#128518 Jokes Tables &#128518</h1>
 
-    <table id="table" class="table table-hover table-bordered">
-        <thead></thead>
-        <tbody></tbody>
-    </table>
-    </div>
+                <div class="table-responsive text-center ">
+                    <table id="table" class="table table-hover table-bordered">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const apiUrl = "https://api.allorigins.win/raw?url=https://official-joke-api.appspot.com/jokes/ten";
@@ -43,19 +45,19 @@
                 .then((data) => {
                     let headers = `
           <tr class="table-dark">
-            <th scope="col">id</th>
-            <th scope="col">type</th>
-            <th scope="col">setup</th>
-            <th scope="col">punchline</th>
+            <th scope="col">Id</th>
+            <th scope="col">Type</th>
+            <th scope="col">Setup</th>
+            <th scope="col">Punchline</th>
           </tr>`;
                     document.querySelector("thead").innerHTML = headers;
 
                     let rows = "";
                     data.forEach((joke) => {
                         rows += `
-              <tr>
+              <tr class="text-black fw-bold">
                 <td>${joke.id}</td>
-                <td>${joke.type}</td>
+                <td class="text-capitalize">${joke.type}</td>
                 <td>${joke.setup} </td>
                 <td>${joke.punchline}</td>
               </tr>
